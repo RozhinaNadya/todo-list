@@ -73,6 +73,7 @@ const styles = StyleSheet.create({
     taskBodyText: {
         fontSize: 20,
         marginBottom: 10,
+        marginHorizontal: 10
     },
     plusButton: {
         width: 60,
