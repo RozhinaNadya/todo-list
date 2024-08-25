@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
     StyleSheet,
     View,
     Text,
+    FlatList,
     Pressable,
 } from 'react-native';
 
@@ -16,17 +17,26 @@ export default function Home({ navigation }) {
         navigation.navigate('Done');
     }
 
+    const [tasks, setTasks] = useState([
+        {title: 'Title 1', text: 'Text One Text One Text One'},
+        {title: 'Title 2', text: 'Text Two Text Two Text Two Text Two Text Two'}
+    ])
+
     return (
         <View style={styles.container}>
         <View style={styles.body}>
+            <FlatList
+            data={tasks}
+            renderItem={({ item }) => (
             <View style={styles.taskBody}>
                 <Text style={styles.titleText}>
-                    Title
+                    {item.title}
                     </Text>
                 <Text style={styles.taskBodyText}>
-                    Text text text
+                {item.text}
                     </Text>
             </View>
+            )}/>
         </View>
         <Pressable
             onPress={onPressNewTask}
@@ -56,7 +66,8 @@ const styles = StyleSheet.create({
         backgroundColor: 'white',
         borderRadius: 10,
         justifyContent: 'center',
-        alignItems: 'center'
+        alignItems: 'center',
+        marginVertical: 10
     },
     titleText: {
         fontSize: 40,
@@ -64,7 +75,7 @@ const styles = StyleSheet.create({
         margin: 10,
     },
     taskBodyText: {
-        fontSize: 30,
+        fontSize: 20,
         marginBottom: 10,
     },
     plusButton: {
