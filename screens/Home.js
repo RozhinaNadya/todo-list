@@ -19,17 +19,14 @@ export default function Home({ navigation }) {
     return (
         <View style={styles.container}>
         <View style={styles.body}>
-            <Text style={styles.text}>
-                Screen Home
-        </Text>
-            <Pressable
-                onPress={onPressHandler}
-                style={({ pressed }) => ({ backgroundColor: pressed ? '#ddd' : '#0f0' })}
-            >
-                <Text style={styles.text}>
-                    Go to Screen Done
-          </Text>
-            </Pressable>
+            <View style={styles.taskBody}>
+                <Text style={styles.titleText}>
+                    Title
+                    </Text>
+                <Text style={styles.taskBodyText}>
+                    Text text text
+                    </Text>
+            </View>
         </View>
         <Pressable
             onPress={onPressNewTask}
@@ -49,13 +46,26 @@ const styles = StyleSheet.create({
     },
     body: {
         flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
+        flexDirection:'row',
+        justifyContent: 'space-between',
+        alignItems: 'flex-start',
+        padding: 10
     },
-    text: {
+    taskBody: {
+        flex: 1,
+        backgroundColor: 'white',
+        borderRadius: 10,
+        justifyContent: 'center',
+        alignItems: 'center'
+    },
+    titleText: {
         fontSize: 40,
         fontWeight: 'bold',
         margin: 10,
+    },
+    taskBodyText: {
+        fontSize: 30,
+        marginBottom: 10,
     },
     plusButton: {
         width: 60,
