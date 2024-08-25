@@ -9,10 +9,6 @@ import {
 
 export default function Home({ navigation }) {
 
-    const onPressHandler = () => {
-        navigation.navigate('Done');
-    }
-
     const onPressNewTask = () => {
         navigation.navigate('Done');
     }
