@@ -24,8 +24,8 @@ export default function App() {
     <Provider store={Store}>
       <NavigationContainer>
         <RootStack.Navigator>
-          <RootStack.Screen name="Main" component={MainTabs} options={{ headerShown: false }} />
-          <RootStack.Screen name="Task" component={Task} options={{ headerShown: false }} />
+          <RootStack.Screen name="Home" component={MainTabs} options={{ headerShown: false }} />
+          <RootStack.Screen name="Task" component={Task} />
         </RootStack.Navigator>
       </NavigationContainer>
     </Provider>
