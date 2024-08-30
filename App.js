@@ -14,7 +14,7 @@ const RootStack = createStackNavigator();
 
 const MainTabs = () => (
   <Tab.Navigator>
-    <Tab.Screen name='Home' component={Home} />
+    <Tab.Screen name='To-do list' component={Home} />
     <Tab.Screen name='Done' component={Done} />
   </Tab.Navigator>
 );
@@ -24,7 +24,7 @@ export default function App() {
     <Provider store={Store}>
       <NavigationContainer>
         <RootStack.Navigator>
-          <RootStack.Screen name="Home" component={MainTabs} options={{ headerShown: false }} />
+          <RootStack.Screen name="All tasks" component={MainTabs} options={{ headerShown: false }} />
           <RootStack.Screen name="Task" component={Task} />
         </RootStack.Navigator>
       </NavigationContainer>
