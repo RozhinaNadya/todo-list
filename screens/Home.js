@@ -10,7 +10,7 @@ import {
 export default function Home({ navigation }) {
 
     const onPressNewTask = () => {
-        navigation.navigate('Done');
+        navigation.navigate('Task');
     }
 
     const [tasks, setTasks] = useState([
