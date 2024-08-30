@@ -9,7 +9,7 @@ import {
 export default function Done({ navigation }) {
 
     const onPressHandler = () => {
-        navigation.navigate('Home');
+        navigation.navigate('To-do list');
     }
 
     return (
