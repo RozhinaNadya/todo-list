@@ -19,8 +19,8 @@ export default function Task({ navigation }) {
             try {
                 var Task = {
                     ID: taskID,
-                    Title: title,
-                    Text: text
+                    title: title,
+                    text: text
                 }
                 let newTasks = [...tasks, Task]
                 AsyncStorage.setItem('Tasks', JSON.stringify(newTasks))

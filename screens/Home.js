@@ -16,7 +16,7 @@ export default function Home({ navigation }) {
     const dispatch = useDispatch();
 
     const onPressNewTask = () => {
-        dispatch(setTaskID(tasks.lengh + 1));
+        dispatch(setTaskID(tasks.length + 1));
         navigation.navigate('Task');
     }
 
