@@ -41,7 +41,13 @@ export default function Home({ navigation }) {
             <FlatList
             data={tasks}
             renderItem={({ item }) => (
-            <TouchableOpacity style={styles.taskBody}>
+            <TouchableOpacity 
+            style={styles.taskBody}
+            onPress={() => {
+                dispatch(setTaskID(item.ID));
+                navigation.navigate('Task');
+            }}
+            >
                 <Text style={styles.titleText}>
                     {item.title}
                     </Text>
@@ -49,7 +55,9 @@ export default function Home({ navigation }) {
                 {item.text}
                     </Text>
             </TouchableOpacity>
-            )}/>
+            )}
+            keyExtractor={(item, index) => index.toString()}
+            />
         </View>
         <Pressable
             onPress={onPressNewTask}

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { StyleSheet, View, TextInput, Alert } from "react-native";
 import CustomButton from "../utils/CustomButton";
 import { useDispatch, useSelector } from 'react-redux';
@@ -12,6 +12,18 @@ export default function Task({ navigation }) {
     const {tasks, taskID} = useSelector(state=>state.taskReducer);
     const dispatch = useDispatch();
 
+    useEffect(() => {
+        getTask();
+    }, [])
+
+    const getTask = () => {
+        const Task = tasks.find(task => task.ID === taskID)
+        if (Task) {
+            setTitle(Task.title);
+            setText(Task.text);
+        }
+    }
+
     const setTask = () => {
         if (title.length == 0) {
             Alert.alert('Oooops 🙊', 'Seems you forgot about a title')
@@ -22,11 +34,18 @@ export default function Task({ navigation }) {
                     title: title,
                     text: text
                 }
-                let newTasks = [...tasks, Task]
+                const index = tasks.findIndex(task => task.ID === taskID);
+                var newTasks = []
+                if (index > -1) {
+                    newTasks = [...tasks];
+                    newTasks[index] = Task;
+                } else {
+                    newTasks = [...tasks, Task];
+                }
                 AsyncStorage.setItem('Tasks', JSON.stringify(newTasks))
                 .then(() => {
                     dispatch(setTasks(newTasks));
-                    Alert.alert('Success!💫', 'You just saved a new task');
+                    Alert.alert('Success!💫', 'You just saved the task');
                     navigation.goBack();
                 })
                 .catch(err => console.log(err))
