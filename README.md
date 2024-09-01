@@ -1,5 +1,3 @@
 Current state 
 
-
-https://github.com/user-attachments/assets/3a451311-9462-442d-a3db-cfdba6864424
-
+https://github.com/user-attachments/assets/4919566f-39f4-49ba-94d5-3fcfcaf61531
