@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { StyleSheet, Text, View, TextInput } from "react-native";
+import CustomButton from "../utils/CustomButton";
 
 export default function Task() {
     const [title, setTitle] = useState('');
@@ -20,6 +21,11 @@ export default function Task() {
             placeholder='Text'
             multiline
             onChangeText={(value) => setText(value)}
+            />
+            <CustomButton
+                title='Save'
+                color='#4E1C8E'
+                style={{ width: '100%' }}
             />
         </View>
     )
