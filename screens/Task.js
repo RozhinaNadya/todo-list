@@ -31,7 +31,7 @@ export default function Task({ navigation }) {
                 })
                 .catch(err => console.log(err))
             } catch(error) {
-                console.log(error)
+                console.log(error);
             }
         }
     }

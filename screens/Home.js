@@ -5,6 +5,7 @@ import {
     Text,
     FlatList,
     Pressable,
+    TouchableOpacity,
 } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 import { setTaskID, setTasks } from '../redux/actions';
@@ -21,17 +22,17 @@ export default function Home({ navigation }) {
 
     const getTasks = () => {
         AsyncStorage.getItem('Tasks')
-        .then(tasks => {
-            const parsedTasks = JSON.parse(tasks);
-            if (parsedTasks && typeof parsedTasks === 'object') {
-                dispatch(setTasks(parsedTasks))
-            }
-        })
-        .catch(err => console.log(err))
+            .then(tasks => {
+                const parsedTasks = JSON.parse(tasks);
+                if (parsedTasks && typeof parsedTasks === 'object') {
+                    dispatch(setTasks(parsedTasks));
+                }
+            })
+            .catch(err => console.log(err))
     }
 
     useEffect(() => {
-        getTasks()
+        getTasks();
     }, [])
 
     return (
@@ -40,14 +41,14 @@ export default function Home({ navigation }) {
             <FlatList
             data={tasks}
             renderItem={({ item }) => (
-            <View style={styles.taskBody}>
+            <TouchableOpacity style={styles.taskBody}>
                 <Text style={styles.titleText}>
                     {item.title}
                     </Text>
                 <Text style={styles.taskBodyText}>
                 {item.text}
                     </Text>
-            </View>
+            </TouchableOpacity>
             )}/>
         </View>
         <Pressable

@@ -1,6 +1,7 @@
-import { createStore, combineReducers, applyMiddleware } from 'redux';
+import { combineReducers, applyMiddleware } from 'redux';
 import { thunk } from 'redux-thunk'
 import taskReducer from './reducers';
+import { legacy_createStore as createStore } from 'redux'
 
 const rootReducer = combineReducers({ taskReducer });
 
