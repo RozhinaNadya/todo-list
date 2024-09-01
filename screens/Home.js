@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect } from 'react';
 import {
     StyleSheet,
     View,
@@ -6,17 +6,33 @@ import {
     FlatList,
     Pressable,
 } from 'react-native';
+import { useDispatch, useSelector } from 'react-redux';
+import { setTaskID, setTasks } from '../redux/actions';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export default function Home({ navigation }) {
+    const { tasks } = useSelector(state=>state.taskReducer);
+    const dispatch = useDispatch();
 
     const onPressNewTask = () => {
+        dispatch(setTaskID(tasks.lengh + 1));
         navigation.navigate('Task');
     }
 
-    const [tasks, setTasks] = useState([
-        {title: 'Title 1', text: 'Text One Text One Text One'},
-        {title: 'Title 2', text: 'Text Two Text Two Text Two Text Two Text Two'}
-    ])
+    const getTasks = () => {
+        AsyncStorage.getItem('Tasks')
+        .then(tasks => {
+            const parsedTasks = JSON.parse(tasks);
+            if (parsedTasks && typeof parsedTasks === 'object') {
+                dispatch(setTasks(parsedTasks))
+            }
+        })
+        .catch(err => console.log(err))
+    }
+
+    useEffect(() => {
+        getTasks()
+    }, [])
 
     return (
         <View style={styles.container}>
